@@ -1,0 +1,39 @@
+﻿@model IEnumerable<Serversideprogrammering.Models.User>
+
+@{
+    ViewData["Title"] = "Home Page";
+}
+
+<div class="text-center">
+    <h1>Todo List for @ViewBag.User.Username</h1>
+    <hr />
+    <a asp-controller="Home" asp-action="CreateTodo">
+        <input type="button" class="btn btn-primary" value="Create New Todo-item" />
+    </a>
+    <hr />
+
+    <table class="table">
+        <thead>
+            <tr>
+                <th>Title</th>
+                <th>Description</th>
+                <th>Do Before</th>
+                <th>Date Added</th>
+                <th>Is Done</th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var item in @ViewBag.User.TodoItems)
+            {
+                <tr>
+                    <td>@item.Title</td>
+                    <td>@item.Description</td>
+                    <td>@item.DoneBefore</td>
+                    <td>@item.Added</td>
+                    <td>@item.IsDone</td>
+                </tr>
+            }
+        </tbody>
+    </table>
+    <p>@ViewBag.Message</p>
+</div>
